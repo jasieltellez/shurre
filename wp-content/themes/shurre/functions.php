@@ -52,7 +52,10 @@ if ( ! function_exists( 'shurre_setup' ) ) :
 		 * to output valid HTML5.
 		 */
 		add_theme_support( 'html5', array(
-			'search-form',
+			'<div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>',
 			'comment-form',
 			'comment-list',
 			'gallery',

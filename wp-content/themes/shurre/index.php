@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-<h1>Fichero index.php</h1>
+
 <div class="row">
 	<div class="col m2 side-bar">
 		<?php get_sidebar();?>

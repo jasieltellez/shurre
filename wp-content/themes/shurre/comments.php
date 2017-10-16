@@ -20,8 +20,8 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-<h1>Fichero comments.php</h1>
+<div id="comments" class="comments-area col m8 offset-m2">
+
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
@@ -66,7 +66,7 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+	comment_form(array('class_submit' => 'waves-effect waves-light btn '));
 	?>
 
 </div><!-- #comments -->

@@ -8,19 +8,15 @@
  */
 
 ?>
-<h1>Fichero contentList.php</h1>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
 
 	<div class="row">
 		<div class="col s12 ">
+
 			<div class="card">
-				<div class="card-image">
-					<?php echo get_the_post_thumbnail($post_id, 'thumbnail',array( 'class' => 'col m8 offset-m2' )); ?>
-					
-				</div>
-				<div class="card-content">
-					<div>
+			<div class="titulo-card ">
 						<?php
 						if ( is_singular() ) :
 							the_title( '<h5 class="entry-title">', '</h5>' );
@@ -28,13 +24,19 @@
 							the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
 						endif;?>
 					</div>
-					<div class="row col s12">
-						<?php $tags = get_tags();
+				<div class="card-image">
+					<?php echo get_the_post_thumbnail($post_id, 'thumbnail',array( 'class' => 'col m8 offset-m2' )); ?>
+					
+				</div>
+				<div class="card-content">
+					
+					<div class="row col s12 tags-row">
+						<?php $tags = get_the_tags();
 						$html = '';
 						foreach ( $tags as $tag ) {
 							
 
-							$html .= "<div class='chip'><a href=''>{$tag->name}</a></div>";
+							$html .= "<div class='chip red'><a href=". get_tag_link($tag).">{$tag->name}</a></div>";
 						}
 						
 						echo $html; ?>

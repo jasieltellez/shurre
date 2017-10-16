@@ -8,39 +8,35 @@
  */
 
 ?>
-<h1>Fichero content.php</h1>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header ">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h5 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h5>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php shurre_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
+	
 
 	<div class="row">
 		<div class="col s12 m8 offset-m2">
 			<div class="card">
+			<div class="titulo-card center">
+						<?php
+						if ( is_singular() ) :
+							the_title( '<h4 class="entry-title">', '</h4>' );
+						else :
+							the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' );
+						endif;?>
+					</div>
 				<div class="card-image">
 					<?php echo get_the_post_thumbnail($post_id, 'thumbnail',array( 'class' => 'col m8 offset-m2' )); ?>
 					
 				</div>
 				<div class="card-content">
-					<div class="row col s12">
-						<?php $tags = get_tags();
+
+					<div class="row col s12 tags-row" >
+						<?php $tags = get_the_tags();
 						$html = '';
 						foreach ( $tags as $tag ) {
 							
 
-							$html .= "<div class='chip'><a href=''>{$tag->name}</a></div>";
+							$html .= "<div class='chip red'><a href=". get_tag_link($tag).">{$tag->name}</a></div>";
 						}
 						
 						echo $html; ?>
@@ -48,17 +44,17 @@
 
 					<div class="row">
 						<div class="col s6 card">
-							<div class="receta-descrip"><h5 >Descripción de la receta</h5></div>
+							<div class="titulo-card"><h5 >Descripción de la receta</h5></div>
 							<div><p><?php echo get_post_field( 'Descripción'); ?></p></div>
 						</div>
 						<div class="col s6 card">
-							<div class="receta-ingredientes"><h5 >Ingredientes</h5></div>
+							<div class="titulo-card"><h5 >Ingredientes</h5></div>
 							<div><p><?php echo get_post_field( 'Ingredientes'); ?></p></div>
 						</div>
 					</div>
 
 					<div class="card">
-							<div class="receta-preparacion"><h5 >Preparación</h5></div>
+							<div class="titulo-card"><h5 >Preparación</h5></div>
 							<div><p><?php echo get_post_field( 'Preparación'); ?></p></div>
 					</div>
 
