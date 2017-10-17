@@ -8,44 +8,56 @@
  */
 
 get_header(); ?>
-<h1>Fichero search.php</h1>
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
 
-		<?php
-		if ( have_posts() ) : ?>
+<div class="row">
+	<div class="col m2 side-bar">
+		<?php get_sidebar();?>
+	</div>
+	<div class="col m10 entradas">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
 
-			<header class="page-header">
-				<h1 class="page-title"><?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'shurre' ), '<span>' . get_search_query() . '</span>' );
-				?></h1>
-			</header><!-- .page-header -->
+				<?php
+				if ( have_posts() ) : ?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+				<header class="page-header">
+					<h4 class="page-title"><?php
+						/* translators: %s: search query. */
+						printf( esc_html__( 'Resultados de búsqueda para: %s', 'shurre' ), '<span>' . get_search_query() . '</span>' );
+						?></h4>
+					</header><!-- .page-header -->
+
+					<?php
+					/* Start the Loop */
+					while ( have_posts() ) : the_post();
 
 				/**
 				 * Run the loop for the search to output the results.
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'search' );
+				if (get_post_type()=='post') {
+					echo "<div class='col m4'>";
 
-			endwhile;
+					get_template_part( 'template-parts/content', 'list');
+					echo "</div>";
+				}
+				
 
-			the_posts_navigation();
+				endwhile;
 
-		else :
+			//the_posts_navigation();
 
-			get_template_part( 'template-parts/content', 'none' );
+				else :
 
-		endif; ?>
+					get_template_part( 'template-parts/content', 'none' );
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+				endif; ?>
 
+			</main><!-- #main -->
+		</div><!-- #primary -->
+	</div>
+</div>
 <?php
-get_sidebar();
+
 get_footer();
