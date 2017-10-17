@@ -12,17 +12,22 @@
  * @package ShUrRe
  */
 
-get_header(); ?>
+ ?>
 
 
 <div class="row">
-	<div class="col m2 side-bar">
+	<div class="col m2 side-bar ">
+
 		<?php get_sidebar();?>
 	</div>
 	<div class="col m10 entradas">
-		
+		<?php get_header();?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+		<div class="col s12 ">
+			<h4 class="page-title">Recetas más recientes</h4>
+		</div>
+		
 		<div class="row">
 		<?php
 		if ( have_posts() ) :
@@ -44,12 +49,11 @@ get_header(); ?>
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
 				echo "<div class='col m4'>";
-				//get_template_part( 'template-parts/content', get_post_format() );
 				get_template_part( 'template-parts/content', 'list');
 				echo "</div>";
 			endwhile;
 
-			the_posts_navigation();
+			//the_posts_navigation();
 
 		else :
 
@@ -62,8 +66,8 @@ get_header(); ?>
 	</div>
 </div>
 
-
-
 <?php
 
 get_footer();?>
+
+

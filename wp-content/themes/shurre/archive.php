@@ -6,14 +6,14 @@
  *
  * @package ShUrRe
  */
-
-get_header(); ?>
+ ?>
 
 <div class="row">
 	<div class="col m2 side-bar">
 		<?php get_sidebar();?>
 	</div>
 	<div class="col m10 entradas">
+	<?php get_header();?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main">
 				
@@ -54,6 +54,7 @@ get_header(); ?>
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
+</div>
 </div>
 <?php
 get_footer();
